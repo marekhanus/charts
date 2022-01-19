@@ -1898,7 +1898,7 @@ postgresql:
 ###################################
 externalDatabase:
   ## the type of external database
-  ## - allowed values: "mysql", "postgres"
+  ## - allowed values: "mysql", "postgres", "mssql"
   ##
   type: postgres
 
@@ -1947,6 +1947,8 @@ externalDatabase:
   ## ____ EXAMPLE _______________
   ##   # require SSL (only for Postgres)
   ##   properties: "?sslmode=require"
+  ##   # specify the driver (for MSSQL)
+  ##   properties: "?driver=ODBC+Driver+17+for+SQL+Server"
   ##
   properties: ""
 
