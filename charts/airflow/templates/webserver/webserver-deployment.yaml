@@ -21,6 +21,9 @@ metadata:
     chart: {{ include "airflow.labels.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
+    {{- if .Values.airflow.labels }}
+    {{- toYaml .Values.airflow.labels | nindent 4 }}
+    {{- end }}
     {{- if .Values.web.labels }}
     {{- toYaml .Values.web.labels | nindent 4 }}
     {{- end }}
@@ -58,6 +61,9 @@ spec:
         app: {{ include "airflow.labels.app" . }}
         component: web
         release: {{ .Release.Name }}
+        {{- if .Values.airflow.podLabels }}
+        {{- toYaml .Values.airflow.podLabels | nindent 8 }}
+        {{- end }}
         {{- if .Values.web.podLabels }}
         {{- toYaml .Values.web.podLabels | nindent 8 }}
         {{- end }}

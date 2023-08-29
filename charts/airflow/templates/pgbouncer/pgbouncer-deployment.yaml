@@ -65,6 +65,9 @@ metadata:
     chart: {{ include "airflow.labels.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
+    {{- if .Values.airflow.labels }}
+    {{- toYaml .Values.airflow.labels | nindent 4 }}
+    {{- end }}
     {{- if .Values.pgbouncer.labels }}
     {{- toYaml .Values.pgbouncer.labels | nindent 4 }}
     {{- end }}
@@ -102,6 +105,9 @@ spec:
         app: {{ include "airflow.labels.app" . }}
         component: pgbouncer
         release: {{ .Release.Name }}
+        {{- if .Values.airflow.podLabels }}
+        {{- toYaml .Values.airflow.podLabels | nindent 8 }}
+        {{- end }}
         {{- if .Values.pgbouncer.podLabels }}
         {{- toYaml .Values.pgbouncer.podLabels | nindent 8 }}
         {{- end }}
